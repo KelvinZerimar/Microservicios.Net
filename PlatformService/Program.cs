@@ -9,9 +9,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+Console.WriteLine("--> Using InMem Db");
 builder.Services.AddDbContext<AppDbContext>(opt => 
     opt.UseInMemoryDatabase("InMem"));
 builder.Services.AddScoped<IPlatformRepo,PlatformRepo>();
+
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
@@ -27,7 +31,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+PrepDb.PrepPopulation(app);
 
 app.Run();
 
-PrepDb.PrepPopulation(app);
+
