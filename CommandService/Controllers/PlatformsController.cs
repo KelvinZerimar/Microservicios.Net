@@ -14,7 +14,7 @@ namespace CommandService.Controllers
         [HttpPost]
         public ActionResult TestInboundConnection()
         {
-            Console.WriteLine("--> Getting Platforms from CommandsService");
+            Console.WriteLine("--> Inbound POST # Command Service");
             return Ok();
         }
     }

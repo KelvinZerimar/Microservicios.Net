@@ -1,4 +1,5 @@
 using AutoMapper;
+using PlatformService.Dtos;
 using PlatformsService.Dtos;
 using PlatformsService.Models;
 
